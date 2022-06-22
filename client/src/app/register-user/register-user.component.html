@@ -1,0 +1,40 @@
+<app-admin-header>
+
+</app-admin-header>
+
+<body>
+
+    <form>
+
+        <label for="username">Nombre</label>
+        <input
+        type="email"
+        [(ngModel)]="name"
+        name="email"
+        placeholder="User"
+        required="required"
+        id="username"
+      />
+       
+        <label for="password">Correo</label>
+        <input
+        type="text"
+        [(ngModel)]="email"
+        name="password"
+        placeholder="Password"
+        required="required"
+        id="password"
+      />
+        
+       <label for="password">Rol</label>
+       <select class="buttondesplegable" name="miselect" [(ngModel)]="rol">
+              <option>Administrador</option>
+              <option>Usuario</option>
+              <option>Ventas</option>
+       </select>
+
+        <button  type="submit" (click)="login()" >Registrar   </button>
+        
+    </form>
+</body>
+

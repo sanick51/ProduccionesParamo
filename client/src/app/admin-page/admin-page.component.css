@@ -1,0 +1,10 @@
+table {width: 100%;}
+.mat-row:nth-child(2n+1){
+    background-color: #ececec;
+  }
+  .mat-row:not(:nth-child(4n+1)){
+    background-color:#ffffff;
+  } 
+#title{
+  margin-top: 100px;
+}
