@@ -7,21 +7,23 @@ import { HistorialProyectComponent } from './historial-proyect/historial-proyect
 import { ContainerComponent } from './container/container.component';
 import { CupulaComponent } from './cupula/cupula.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { Autorizacion } from './autorizacion';
+import { UsersAdmiComponent } from './users-admi/users-admi.component';
 
 const routes: Routes = [
-  { path: 'Proyects', component: AdminPageComponent },
   { path: 'Cabañas', component: MainPageComponent },
   { path: 'Login', component: LoginPageComponent },
-  { path: 'ProyectHistory', component: HistorialProyectComponent },
   { path: 'Container', component: ContainerComponent },
   { path: 'Cupula', component: CupulaComponent },
-  { path: 'RegisterUser', component: RegisterUserComponent },
+  { path: 'ProjectHistory', component: HistorialProyectComponent , canActivate: [Autorizacion] },
+  { path: 'Projects', component: AdminPageComponent, canActivate: [Autorizacion]   },
+  { path: 'Users', component: UsersAdmiComponent, canActivate: [Autorizacion]  },
   { path: '**', component: MainPageComponent },
 ];
 
 // configures NgModule imports and exports
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

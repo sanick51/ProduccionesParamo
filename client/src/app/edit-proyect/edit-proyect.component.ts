@@ -9,10 +9,11 @@ import { Proyecto } from '../proyecto';
 export class EditProyectComponent implements OnInit {
 
   lista:string[]=["Cabaña","Cupula","Container"];
-
+  
   constructor(
     public dialogRef: MatDialogRef<EditProyectComponent>,
-    @ Inject(MAT_DIALOG_DATA) public data: Proyecto) {}
+    @ Inject(MAT_DIALOG_DATA) public data: Proyecto) {
+    }
 
   ngOnInit() {
   }

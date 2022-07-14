@@ -1,4 +1,4 @@
-<ng-container>
+<div class="font">
     <div id="ABC" class="container"> 
         <div  class="card mt-4">
           <div  class="card-body ">
@@ -9,6 +9,7 @@
             <div  class="form-group">
               <input type="text" [(ngModel)]="selectedContact.firstName" placeholder="Nombre de contacto" class="form-control mt-2" required>
             </div>
+            
             <div class="form-group">
               <input type="text" [(ngModel)]="selectedContact.lastName" placeholder="Apellido de contacto" class="form-control mt-2" required>
             </div>
@@ -16,14 +17,38 @@
               <input type="email" [(ngModel)]="selectedContact.email" placeholder="Correo" class="form-control mt-2" required>
             </div>
             <div class="form-group">
-                <input type="email" [(ngModel)]="selectedContact.phone" placeholder="Telefono" class="form-control mt-2" required>
+                <input type="number" [(ngModel)]="selectedContact.phone" placeholder="Telefono" class="form-control mt-2" required>
               </div>
-
+              
+                <div class="form-group" id="select" >
+                <mat-form-field>
+                  <mat-label>Tipo de proyecto</mat-label>
+                  <mat-select  [(ngModel)]="selectedContact.type">
+                    <mat-option>-- None --</mat-option>
+                    <mat-optgroup label="Cabaña">
+                      <mat-option value="1">Cabaña tipo 1</mat-option>
+                      <mat-option value="2">Cabaña tipo 2</mat-option>
+                    </mat-optgroup>
+                    <mat-optgroup label="Cupula">
+                      <mat-option value="3"> Cupula tipo 1</mat-option>
+                      <mat-option value="4"> Cupula tipo 2 </mat-option>
+                    </mat-optgroup>
+                    <mat-optgroup label="Container">
+                      <mat-option value="5"> Container 1 </mat-option>
+                      <mat-option value="6"> Container 2 </mat-option>
+                    </mat-optgroup>
+                  </mat-select>
+                </mat-form-field>  
+              </div>
+              
+             
             <button (click)="saveContact()" class="btn btn-primary mt-2">
               Contactar
             </button>
-          <!-- </form> -->
+          
           </div>
         </div>
     </div>  
-</ng-container>
+
+    <simple-notifications></simple-notifications>
+</div>

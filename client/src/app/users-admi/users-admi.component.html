@@ -1,0 +1,55 @@
+<app-admin-header>
+
+    <div id="Title">
+        <div class="top">
+          <h2 >USUARIOS</h2>
+          <mat-icon  class="add" (click)="abrirDialogo()" >add</mat-icon> 
+        </div>
+      </div>  
+      
+      <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+      
+          <ng-container matColumnDef="Codigo">
+            <th mat-header-cell *matHeaderCellDef> Código </th>
+            <td mat-cell *matCellDef="let articulo"> {{articulo.ID_USUARIO}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let articulo"> {{articulo.NOMBRE}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Correo">
+            <th mat-header-cell *matHeaderCellDef> Correo </th>
+            <td mat-cell *matCellDef="let articulo"> {{articulo.CORREO}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="Permisos">
+            <th mat-header-cell *matHeaderCellDef> Permisos </th>
+            <td mat-cell *matCellDef="let articulo"> {{articulo.ROL}} </td>
+          </ng-container>
+    
+      
+          <ng-container matColumnDef="Estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let articulo"> {{articulo.STATE}} </td>
+          </ng-container>
+
+        
+          <ng-container matColumnDef="Acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let j = index;">
+              <button mat-raised-button color="primary" focusable="false" (click)="editUser(j)">
+                Editar usuario
+              </button>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+        </table>
+          
+
+  </app-admin-header>
+  
+  

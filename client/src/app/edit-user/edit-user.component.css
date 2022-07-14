@@ -1,0 +1,10 @@
+.row{
+    display: inline-block;
+    width: 100%;
+}
+.per{
+    margin-bottom: 5%;
+}
+.content{
+    height: 200%;
+}

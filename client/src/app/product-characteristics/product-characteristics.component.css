@@ -1,4 +1,48 @@
-#ABC {
-    background-color: #1a1b1c;
-    padding-top: 0%;
+.container{
+    background: white;
+    padding: 40px;
+    
+}
+
+#card{
+    background: white;
+    padding: 3%;
+    border-radius: 10px;
+    height: 80% ;
+    position: relative;
+   /* background-image: linear-gradient( 135deg, #FF9D6C 10%, #BB4E75 100%);*/
+}
+
+.h1{
+    padding: 20px;
+}
+
+.service-5 {
+    background-color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+      color: #8d97ad;
+    font-weight: 300;
   }
+  
+   .service-5 h2, .service-5 h3, .service-5 h4, .service-5 h5, .service-5 h6 {
+    color: #000000;
+  }
+
+  .service-5 .card.card-shadow {
+      -webkit-box-shadow: 0px 0px 30px rgba(20, 21, 24, 0.1);
+      box-shadow: 0px 0px 30px rgba(78, 91, 121, 0.425);
+  }
+  img {
+    width: 50px; 
+    position: absolute;
+    top: -15px;
+    left: -15px;
+}
+p{
+    font-size: 15px;
+    text-align: left;
+}
+h2{
+    font-size: 22px;
+    text-align: center;
+}

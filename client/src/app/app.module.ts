@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { Routes, RouterModule } from '@angular/router';
+import {  RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DialogoarticuloComponent } from './dialogo-proyecto/dialogo-proyecto.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -29,8 +27,22 @@ import { ContainerComponent } from './container/container.component';
 import { CupulaComponent } from './cupula/cupula.component';
 import { CardComponent } from './card/card.component';
 import { MatCardModule } from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { RegisterUserComponent } from './register-user/register-user.component';
-
+import { Autorizacion } from './autorizacion';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UsersAdmiComponent } from './users-admi/users-admi.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { NotificationsComponent } from './notifications/notifications.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,11 +63,15 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     CupulaComponent,
     CardComponent,
     RegisterUserComponent,
+    ImageSliderComponent,
+    EditUserComponent,
+    UsersAdmiComponent,
+    NotificationsComponent,
   ],
   imports: [
+    MatSelectModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     MatTableModule,
     MatInputModule,
     MatButtonModule,
@@ -64,9 +80,18 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
     MatCardModule,
+    MatMenuModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MDBBootstrapModule.forRoot(),
+    NgbModule,
+    MatBadgeModule,
   ],
   exports: [RouterModule],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [Autorizacion],
+  bootstrap: [AppComponent , HeaderComponent]
 })
 export class AppModule { }

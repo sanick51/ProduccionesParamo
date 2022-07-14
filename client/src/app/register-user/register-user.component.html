@@ -1,40 +1,46 @@
-<app-admin-header>
 
-</app-admin-header>
+<div>
+  
+  <form>
+    <h1>
+      Registrar usuario
+    </h1>
+    <label for="username">Nombre</label>
+    <input
+    type="email"
+    [(ngModel)]="name"
+    name="email"
+    placeholder="Nombre"
+    required="required"
+    id="username"
+  />
+   
+    <label for="password">Correo</label>
+    <input
+    type="text"
+    [(ngModel)]="email"
+    name="password"
+    placeholder="Correo"
+    required="required"
+    id="password"
+  />
+   <br>
+    <mat-form-field >
+      <mat-label>Seleccione permisos</mat-label>
+      <mat-select disableRipple [(ngModel)]="rol" name="miselect" class="buttondesplegable" >
+        <mat-option value="1">Administrador</mat-option>
+        <mat-option value="2">Usuario</mat-option>
+        <mat-option value="3">Ventas</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-<body>
+    <div class="buttons">
+      <button  type="submit" (click)="login()" >Registrar   </button>
+      <button  type="submit" (click)="cancelar()" >Cancelar   </button>
+    </div>
+    
+</form>
+</div>
 
-    <form>
-
-        <label for="username">Nombre</label>
-        <input
-        type="email"
-        [(ngModel)]="name"
-        name="email"
-        placeholder="User"
-        required="required"
-        id="username"
-      />
-       
-        <label for="password">Correo</label>
-        <input
-        type="text"
-        [(ngModel)]="email"
-        name="password"
-        placeholder="Password"
-        required="required"
-        id="password"
-      />
-        
-       <label for="password">Rol</label>
-       <select class="buttondesplegable" name="miselect" [(ngModel)]="rol">
-              <option>Administrador</option>
-              <option>Usuario</option>
-              <option>Ventas</option>
-       </select>
-
-        <button  type="submit" (click)="login()" >Registrar   </button>
-        
-    </form>
-</body>
+<simple-notifications></simple-notifications>
 

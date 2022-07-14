@@ -1,20 +1,36 @@
-
-#container { 
-  display: flex;
-  gap: 16px;
-  top: 50%;
-  left: 50%;
-  
+#frase{
+  font-size: 100%;
+  text-align: center;
+  line-height: 120%;
+  margin:5%;
+  border-top: 2px solid #000000;
+  padding-top: 40px;
 }
 
-@media only screen and (max-width: 1024px) {
+#name{
+  color: rgb(0, 0, 0);
+  font-size: 250%;
+  font-weight: bold;
+  margin-bottom: 8%;
+  padding-bottom: 8%;
+  border-bottom: 2px solid #000000;
+}
+
+#cont { 
+  padding-top: 3%;
+  display: flex;
+  gap: 10px; 
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 678px) {
   
-  #container { 
+  #cont { 
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
-     top: 50%;
-    left: 50%;
+    
   }
   
 } 

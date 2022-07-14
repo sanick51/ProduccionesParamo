@@ -1,8 +1,7 @@
 #ABC {
   text-align: center;
-  background: #1a1b1c;
+  background: #ffffff;
   height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,5 +9,10 @@
 
 #contact{
     margin: 10%;
-    font-size: 2rem;
+    font-size: 100%;
+}
+
+#select{
+    margin: 10%;
+    font-size: 60%;
 }

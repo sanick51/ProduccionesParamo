@@ -3,7 +3,8 @@
     <h1 mat-dialog-title>Proyecto</h1>
     <div mat-dialog-content>
         <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
-                <p>
+                <label>Seleccione estado</label>
+            <p>
                     <select class="buttondesplegable" name="miselect" [(ngModel)]="data.estado"  >
                     <option [value]="item" *ngFor="let item of lista" >{{item}}</option>
                     </select>
@@ -14,7 +15,7 @@
         </div>
     </div>
     <div mat-dialog-actions>
-        <button class="button" mat-button (click)="cancelar()">Cancelar</button>
-        <button class="button" mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
+        <button class="button"  mat-raised-button color="warn" mat-button (click)="cancelar()">Cancelar</button>
+        <button class="button"  mat-raised-button color="primary" mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirmar</button>
     </div>
 </div>
