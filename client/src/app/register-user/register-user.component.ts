@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NotificationsService } from 'angular2-notifications';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserLogin } from '../user-login';
+import { GlobalConstants } from 'src/common/global-constants';
 
 @Component({
   selector: 'app-register-user',
@@ -11,7 +12,6 @@ import { UserLogin } from '../user-login';
 })
 export class RegisterUserComponent implements OnInit {
    
-  API = "http://localhost:3000/Register";
   name: string = '';
   email: string = '';
   rol: string = '';
@@ -43,7 +43,7 @@ export class RegisterUserComponent implements OnInit {
     console.log(role);
     if (this.name != '' && this.email != '' && this.rol != '') {
       if(this.validateEmail(this.email)){
-        this.http.post(this.API, { name: this.name, email: this.email, rol: role })
+        this.http.post(GlobalConstants.API+"Register", { name: this.name, email: this.email, rol: role })
         .subscribe(res => console.log(res));
         this.onSuccess('El usuario recibió un correo con la contraseña y link de activación');
       }else{

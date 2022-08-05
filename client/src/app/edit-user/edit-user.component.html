@@ -1,26 +1,31 @@
+
 <div class="row">
-    <h1 mat-dialog-title>Editar datos</h1>
+  <h1 >Editar datos</h1>
     <div mat-dialog-content class="content">
         <div class="form-group">
             <div class="form-group">
-                <label >Nombre</label>
-                <input type="text"  class="form-control"
-                       [(ngModel)]="data.nombre" >
+              <div class="form__group field">
+                <input type="text"  class="form__field" placeholder="Name"  [(ngModel)]="data.nombre" >
+                <label for="name" class="form__label">Nombre</label>
+                </div>
               </div>
               <div class="form-group" *ngIf="!validation" >
-                <label >Contraseña</label>
-                <input type="password"  class="form-control" 
-                       [(ngModel)]="password">
+                <div class="form__group field">
+                  <input type="password"  class="form__field" placeholder="Name" [(ngModel)]="password">
+                  <label for="name" class="form__label">Contraseña</label>
+                </div>
               </div>
               <div class="form-group" *ngIf="!validation" >
-                <label >Confirmar contraseña</label>
-                <input type="password"  class="form-control" 
-                       [(ngModel)]="cPassword" >
+                <div class="form__group field">
+                  <input type="password" class="form__field" placeholder="Name" [(ngModel)]="cPassword" required />
+                  <label for="name" class="form__label">Confirmar contraseña</label>
+                </div>
               </div>
               <div class="form-group" *ngIf="validation" >
-                <label >Correo</label>
-                <input type="text"  class="form-control" 
-                       [(ngModel)]="data.email" >
+                <div class="form__group field">
+                  <input type="text" class="form__field" placeholder="Name" [(ngModel)]="data.email" >
+                  <label for="name" class="form__label" >Correo</label>
+                </div>
               </div>
 
               <div class="form-group" *ngIf="validation" >
@@ -33,9 +38,9 @@
               </div>
            
           </div>
-    <div mat-dialog-actions>
-        <button mat-button (click)="cancelar()">Cancelar</button>
-        <button mat-button (click)="send()" cdkFocusInitial>Confirmar</button>
+    <div mat-dialog-actions class="buttons">
+        <button mat-button (click)="cancelar()" style="background-color: #e16259" >Cancelar</button>
+        <button mat-button (click)="send()" style="background-color: #a9e159" cdkFocusInitial>Confirmar</button>
     </div>
     <simple-notifications></simple-notifications>
 </div>

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { User } from '../user';
 
 import { NotificationsService } from 'angular2-notifications';
+import { GlobalConstants } from 'src/common/global-constants';
 
 @Component({
   selector: 'app-login-page',
@@ -11,17 +12,17 @@ import { NotificationsService } from 'angular2-notifications';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent  {
-  API = "http://localhost:3000/Login";
-  email: string = '';
+   email: string = '';
   password: string = '';
-
+  imageSrc = '/assets/img/Logo.svg'; 
+  imageAlt = 'Logo'; 
   constructor(public http: HttpClient , private router: Router , public service: NotificationsService) { }
 
   login() {
     if(this.email != '' && this.password != ''){
       if(this.validateEmail(this.email)){
           const body = { email: this.email, password: this.password };
-          this.http.post<User>(this.API, body )
+          this.http.post<User>(GlobalConstants.API+"Login", body )
           .subscribe((response: User) => {
             localStorage.setItem('token', response.token);
             localStorage.setItem('rol', response.rol); 

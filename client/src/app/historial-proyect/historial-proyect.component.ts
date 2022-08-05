@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HistorialProyecto } from '../historial-proyecto';
 import { HttpClient } from '@angular/common/http';
+import { GlobalConstants } from 'src/common/global-constants';
 
 @Component({
   selector: 'app-historial-proyect',
@@ -9,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class HistorialProyectComponent implements OnInit {
-  API = "http://localhost:3000/ProyectsHistory";
   columnas: string[] = ['Codigo', 'Nombre', 'Proyecto' , 'Fecha', 'EstadoInicial', 'EstadoFinal' ];
   actual:string="";
   datos: HistorialProyecto []=[];
@@ -22,7 +22,7 @@ export class HistorialProyectComponent implements OnInit {
   }
 
   fillProyects () {
-    this.http.get<HistorialProyecto[]>(this.API).subscribe( (data : HistorialProyecto[]) => {
+    this.http.get<HistorialProyecto[]>(GlobalConstants.API+"ProyectsHistory").subscribe( (data : HistorialProyecto[]) => {
     this.datos = data;
   }
   );

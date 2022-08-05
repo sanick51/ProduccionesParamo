@@ -1,0 +1,62 @@
+
+.companyName{
+    font-size: 150%;
+    font-weight: bold;
+    justify-content: center;
+  }
+
+.mat-toolbar{
+  height: 7vh;
+}
+img{
+  width: 5%;
+}
+
+.mat-sidenav-container{
+  background-color: white;
+  min-height: 93vh !important;
+}
+
+a{
+    text-decoration: none;
+    font-size: 110%;
+    white-space: normal;
+}
+a:hover{
+  color: #ffffff;
+  background-color: #E3C592;
+}
+
+button{
+    font-size: 110%;
+    min-width: min-content;
+}
+
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mat-sidenav-content{
+      font-size: 200%;
+      text-align: center;
+  }
+
+  .navBar{
+    background-color: #E3C592;
+    height: 80px;
+  }
+  .section-hero {
+    background-image: url('https://scontent.fbga2-1.fna.fbcdn.net/v/t39.30808-6/279002736_1266734910523772_1231048930019498276_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGb-1T23eS9CYyIuJ2UFvXHf_8X_-kGjIV__xf_6QaMhWSO1QdPGDaGN4HHfISdsxE&_nc_ohc=m-AdQNLo3lwAX_tn67j&_nc_ht=scontent.fbga2-1.fna&oh=00_AT8s3Sti2nScBUY6Y_SftwhHWPaIRUR9-Q6Jtpu5ZY6DWQ&oe=62F1A1D7');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: auto;
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+  

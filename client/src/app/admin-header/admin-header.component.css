@@ -1,4 +1,7 @@
-
+.custom-dialog-container .mat-dialog-container {
+  /* add your styles */
+  background-color: blue;
+}
 .companyName{
     font-size: 150%;
     font-weight: bold;

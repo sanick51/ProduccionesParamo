@@ -7,8 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() type: string = '';
+  
   constructor() { }
-
+  
+  imageSrc = '/assets/img/Logo.svg'; 
+  imageAlt = 'Logo'; 
   ngOnInit(): void {
   }
 

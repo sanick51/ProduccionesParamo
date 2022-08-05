@@ -42,7 +42,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UsersAdmiComponent } from './users-admi/users-admi.component';
 import {MatBadgeModule} from '@angular/material/badge';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { MaterialDialogComponent } from './material-dialog/material-dialog.component';
+import { DialogBuyComponent } from './dialog-buy/dialog-buy.component';
+import { HistoryBuyComponent } from './history-buy/history-buy.component';
+import { SocialMediaComponent } from './social-media/social-media.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +71,11 @@ import { NotificationsComponent } from './notifications/notifications.component'
     ImageSliderComponent,
     EditUserComponent,
     UsersAdmiComponent,
-    NotificationsComponent,
+    MaterialDialogComponent,
+    DialogBuyComponent,
+    HistoryBuyComponent,
+    SocialMediaComponent,
+    HomePageComponent,
   ],
   imports: [
     MatSelectModule,

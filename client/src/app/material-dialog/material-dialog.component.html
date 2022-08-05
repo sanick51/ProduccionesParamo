@@ -1,0 +1,33 @@
+
+<div class="container">
+  
+    <form>
+     <br>
+      <mat-form-field class="select">
+        <mat-label>Material</mat-label>
+        <mat-select disableRipple [(ngModel)]="id" name="miselect" class="buttondesplegable" >
+            <mat-option *ngFor="let material of data.data" [value]="material.ID_MATERIAL">
+                {{material.NOMBRE}}
+              </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form__group field">
+        <input
+        type="number" class="form__field" placeholder="Name" 
+        [(ngModel)]="valor"
+        name="value"/>
+
+      <label for="value"  for="name" class="form__label" >Cantidad</label>
+       
+      </div>
+
+  
+
+      <div class="buttons">
+        <button  type="submit" (click)="aceptar()" style="background-color: #a9e159" >Registrar   </button>
+        <button  type="submit" (click)="cancelar()" style="background-color: #e16259" >Cancelar   </button>
+      </div>
+      
+  </form>
+  </div>

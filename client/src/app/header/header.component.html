@@ -1,5 +1,4 @@
 <link href="http://fonts.cdnfonts.com/css/bogart" rel="stylesheet">
-                
 <div> 
     <mat-toolbar class="navBar">
       <div fxShow="true" fxHide.gt-sm="true">
@@ -7,13 +6,15 @@
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-  
+      <img [src]="imageSrc" [alt]="imageAlt" />
       <a mat-button class="companyName" routerLink="/Home" style="font-family: Bogart ">
+       
         <span>PRODUCCIONES PARAMO</span>
       </a>
       <span class="example-spacer"></span>
       <div fxShow="true" fxHide.lt-md="true">
-      
+       
+        <a mat-button routerLink="/Home">Home</a>
         <button mat-button [matMenuTriggerFor]="cabanias">Cabañas</button>
         <mat-menu #cabanias="matMenu" xPosition="after">
           <button mat-menu-item routerLink="/Cabañas">Cabañas1</button>
@@ -64,7 +65,8 @@
         <app-form></app-form>
         <app-product-card></app-product-card>
         <app-footer></app-footer>
-        
+       
       </mat-sidenav-content> 
     </mat-sidenav-container>
+    <app-social-media></app-social-media>
   </div>

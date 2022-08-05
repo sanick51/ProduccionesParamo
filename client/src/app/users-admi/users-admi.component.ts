@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GlobalConstants } from 'src/common/global-constants';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { RegisterUserComponent } from '../register-user/register-user.component';
 import { UserLogin } from '../user-login';
@@ -12,7 +13,6 @@ import { UserLogin } from '../user-login';
 })
 export class UsersAdmiComponent implements OnInit {
   columnas: string[] = ['Codigo','Nombre', 'Correo', 'Permisos' , 'Estado' , 'Acciones'];
-  API = "http://localhost:3000/User";
   datos: UserLogin []=[];
   constructor(public http: HttpClient , public dialog: MatDialog ) { }
 
@@ -21,7 +21,7 @@ export class UsersAdmiComponent implements OnInit {
   }
 
   fillUsers () {
-    this.http.get<UserLogin[]>(this.API).subscribe( (data : UserLogin[]) => {
+    this.http.get<UserLogin[]>(GlobalConstants.API+"User").subscribe( (data : UserLogin[]) => {
     this.datos = data;
     console.log(this.datos);
   }
@@ -30,9 +30,10 @@ export class UsersAdmiComponent implements OnInit {
   editUser(id: number) {
     const User = this.datos[id];
     const dialogo1 = this.dialog.open(EditUserComponent, {
+       panelClass: 'my-dialog',
       data : new UserLogin(User.nombre , '', 'A' , User.email),
       height: '50%',
-      width: '30%',
+      width: '300px',
      });
  
  
@@ -46,7 +47,7 @@ export class UsersAdmiComponent implements OnInit {
         email : art.email,
         rol : this.validatePersmission(art.rol)
       }
-      this.http.put(this.API + '/adm', body).subscribe(
+      this.http.put(GlobalConstants.API+"User" + '/adm', body).subscribe(
         (data: any) => {
           console.log(data);
         }

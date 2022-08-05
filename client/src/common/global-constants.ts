@@ -9,7 +9,8 @@ export class GlobalConstants {
     public static bethIcon : string = 'https://cdn3.iconfinder.com/data/icons/furniture-4-4/512/furniture_living_room_home_house_offie-09-256.png';
     public static chiqIcon : string = 'https://cdn4.iconfinder.com/data/icons/food-and-equipment-outline/32/spoon_holder-256.png';
     public static extIcon : string = '';
-
+    public static API: string = 'http://produccionesparamo.herokuapp.com/';
+   // public static API: string = 'http://localhost';
 
     public static cabaniaImg: string [] = [
         'https://i.ibb.co/W6FGGVq/Caba-a1.jpg',

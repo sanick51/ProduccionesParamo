@@ -1,0 +1,34 @@
+
+<div class="container">
+  
+    <form>
+     <br>
+     
+<div class="form__group field" *ngIf="validate == 'parte'" >
+  
+    <input
+    type="number" class="form__field" placeholder="Name" 
+    [(ngModel)]="cantidad"
+    name="value" 
+  />
+  <label for="value" for="name" class="form__label">Cantidad</label >
+  </div>
+
+<div class="form__group field">
+ 
+  <input
+  type="number" class="form__field" placeholder="Name" 
+  [(ngModel)]="valor"
+  name="cuanti" 
+/>
+<label for="cuanti" for="name" class="form__label">Value</label>
+  
+</div>
+
+      <div class="buttons">
+        <button  type="submit" (click)="aceptar()" style="background-color: #a9e159">Comprar</button>
+        <button  type="submit" (click)="cancelar()" style="background-color: #e16259" >Cancelar</button>
+      </div>
+      
+  </form>
+  </div>

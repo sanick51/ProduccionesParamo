@@ -1,0 +1,146 @@
+<link href="http://fonts.cdnfonts.com/css/bogart" rel="stylesheet">
+<div> 
+    <mat-toolbar class="navBar">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <img [src]="imageSrc" [alt]="imageAlt" />
+      <a mat-button class="companyName" routerLink="/Home" style="font-family: Bogart ">
+       
+        <span>PRODUCCIONES PARAMO</span>
+      </a>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+       
+        <a mat-button routerLink="/Home">Home</a>
+        <button mat-button [matMenuTriggerFor]="cabanias">Cabañas</button>
+        <mat-menu #cabanias="matMenu" xPosition="after">
+          <button mat-menu-item routerLink="/Cabañas">Cabañas1</button>
+          <button mat-menu-item routerLink="/Cabañas">Cabañas2</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="cupula">Cupulas</button>
+        <mat-menu #cupula="matMenu" xPosition="after">
+          <button mat-menu-item routerLink="/Cupula">Cupula1</button>
+          <button mat-menu-item routerLink="/Cupula">Cupula1</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="container">Container</button>
+        <mat-menu #container="matMenu" xPosition="after">
+          <button mat-menu-item routerLink="/Container">Container1</button>
+          <button mat-menu-item routerLink="/Container">Container2</button>
+        </mat-menu>
+        
+        <a mat-button routerLink="/Login">Login</a>
+      </div>
+  
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+  
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <button mat-button [matMenuTriggerFor]="cabanias">Cabañas</button>
+          <mat-menu #cabanias="matMenu" xPosition="after">
+            <button mat-menu-item routerLink="/Cabañas">Cabañas1</button>
+            <button mat-menu-item routerLink="/Cabañas">Cabañas2</button>
+          </mat-menu>
+          <button mat-button [matMenuTriggerFor]="cupula">Cupulas</button>
+          <mat-menu #cupula="matMenu" xPosition="after">
+            <button mat-menu-item routerLink="/Cupula">Cupula1</button>
+            <button mat-menu-item routerLink="/Cupula">Cupula1</button>
+          </mat-menu>
+          <button mat-button [matMenuTriggerFor]="container">Container</button>
+          <mat-menu #container="matMenu" xPosition="after">
+            <button mat-menu-item routerLink="/Container">Container1</button>
+            <button mat-menu-item routerLink="/Container">Container2</button>
+          </mat-menu>
+          
+          <a mat-button routerLink="/Login">Login</a>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+
+        <body class="projects-detail-page" id="section_1">
+
+
+      
+            <main>
+    
+                <section class="hero section-hero section-padding">
+                    <div class="container">
+                        <div class="row">
+    
+                            <div class="col-lg-6 col-12 text-center mx-auto">
+                                <div class="section-hero-text">
+                                    <small class="small-title text-warning">Una familia</small>
+    
+                                    <h1 class="text-white">Un equipo</h1>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                </section>
+    
+    
+                <section class="projects section-padding">
+                    <div class="container">
+                        <div class="row">
+    
+    
+                            <div class="col-lg-6 col-12 mb-5">
+                                <img src="images/projects/pj-gal-szabo-CIXXIWxxec4-unsplash.jpg" class="img-fluid projects-image" alt="">
+    
+                                <h2 class="mt-3 mb-1">Nacimiento</h2>
+    
+                                <p>Este proyecto nació de un grupo de tecnicos que estudiaban en el sena y soñaron con empezar a hacer realidad los sueños de las personas.</p>
+    
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore</p>
+                            </div>
+    
+                            <div class="col-lg-6 col-12 mb-5">
+                                <img src="images/projects/team-fredi-FN3vmVee2sI-unsplash.jpg" class="img-fluid projects-image" alt="">
+    
+                                <h2 class="mt-3 mb-1">Inicios</h2>
+    
+                                <p>Iniciamos con la construcción de cabañas a pequeña escala, para posteriormente ir haciendo estos sueños mas grandes y dejar las limitaciones cada vez mas atrás.</p>
+    
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore</p>
+                            </div>
+    
+                            <div class="col-lg-4 col-12">
+                                <img src="images/projects/vmsign-x9yGe7wnvKQ-unsplash.jpg" class="img-fluid projects-image" alt="">
+    
+                                <h3 class="mt-3 mb-1">Atención</h3>
+    
+                                <p>Siempre brindamos la mejor atención a nuestros clintes por los diferentes canales que manejamos</p>
+                            </div>
+    
+                            <div class="col-lg-4 col-12 my-lg-0 my-5">
+                                <img src="images/projects/elena-baidak-pz69kY0UQuQ-unsplash.jpg" class="img-fluid projects-image" alt="">
+    
+                                <h3 class="mt-3 mb-1">Acompañamiento</h3>
+    
+                                <p>Se realiza un acompañamiento constante a los clientes para que en todo momento sepan el estado se su proyecto</p>
+                            </div>
+    
+                            <div class="col-lg-4 col-12">
+                                  
+                                <h3 class="mt-3 mb-1">Dedicación</h3>
+    
+                                <p>Viajamos hasta donde se requiera una instalación para instalar un pequeño asentamiento para poder trabajar todo el tiempo que sea posible</p>
+                            </div>
+    
+                        </div>
+                    </div>
+                </section>
+    
+            </main>
+    
+      
+        </body>
+        <app-footer></app-footer>
+      </mat-sidenav-content> 
+    </mat-sidenav-container>
+    <app-social-media></app-social-media>
+  </div>

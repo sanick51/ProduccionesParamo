@@ -1,3 +1,3 @@
 export class Material {
-    constructor(public name: string , public price: number , public size:number) {}
+    constructor(public ID_MATERIAL: number ,public NOMBRE: string , public UNIDAD_MEDIDA: string , public CANTIDAD:number) {}
 }

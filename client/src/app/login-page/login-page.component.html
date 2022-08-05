@@ -9,14 +9,12 @@
     <!--Stylesheet-->
     
 </head>
+
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+  <img [src]="imageSrc" [alt]="imageAlt" />
     <form>
         <h3>Inicia sesión</h3>
-
+       
         <label for="username">Username</label>
         <input
         type="email"
@@ -39,7 +37,7 @@
       />
         
 
-        <button  type="submit" (click)="login()" >Log In</button>
+        <button  type="submit" (click)="login()" >Iniciar sesion</button>
         
     </form>
     <simple-notifications></simple-notifications>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from '../contact';
 import { HttpClient } from '@angular/common/http';
 import { NotificationsService } from 'angular2-notifications';
+import { GlobalConstants } from 'src/common/global-constants';
 
 @Component({
   selector: 'app-form',
@@ -9,7 +10,6 @@ import { NotificationsService } from 'angular2-notifications';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  API = "http://localhost:3000/Contact";
   constructor(public http: HttpClient , public service: NotificationsService) { }
   typeC :string = '';
 
@@ -26,8 +26,8 @@ export class FormComponent implements OnInit {
           email: this.selectedContact.email , phone: this.selectedContact.phone , type: this.selectedContact.type};
           this.onSuccess('Gracias '+ this.selectedContact.firstName +' por interesarte, pronnto nos pondremos en contacto ');
          
-          this.http.post(this.API, body).subscribe(res => console.log(res));
-          this.http.post(this.API+'/Notification', {message: "La persona "+ this.selectedContact.firstName+" identificado con el correo " + this.selectedContact.email+
+          this.http.post(GlobalConstants.API+"Contact", body).subscribe(res => console.log(res));
+          this.http.post(GlobalConstants.API+"Contact"+'/Notification', {message: "La persona "+ this.selectedContact.firstName+" identificado con el correo " + this.selectedContact.email+
         " Está interesado en el proyecto " + this.selectedContact.type}).subscribe(res => console.log(res));
         this.selectedContact = new Contact();
       }else{

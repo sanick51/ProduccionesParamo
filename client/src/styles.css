@@ -2,3 +2,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.my-dialog .mat-dialog-container {
+		padding: 0;  
+        padding-left: 15px;   
+        overflow-y: hidden; /* Hide vertical scrollbar */
+        overflow-x: hidden;
+     }
+
+.my-dialog h1{
+    margin-left: 50px;
+}
+.my-dialog .buttons{
+    margin-left: 28px;
+}
+

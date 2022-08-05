@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationsService } from 'angular2-notifications';
+import { GlobalConstants } from 'src/common/global-constants';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { Notification } from '../notification';
 import { UserLogin } from '../user-login';
@@ -13,7 +14,6 @@ import { UserLogin } from '../user-login';
 })
 export class AdminHeaderComponent implements OnInit {
   notifications : number = 0;
-  API = "http://localhost:3000/Notification";
   validation = false;
   dialog: any;
   listNotifications: Notification [] =[];
@@ -28,7 +28,7 @@ export class AdminHeaderComponent implements OnInit {
   }
 
   fillNotifications(){
-    this.http.get<Notification[]>(this.API+':'+localStorage.getItem('email') ).subscribe( (data : Notification[]) => {
+    this.http.get<Notification[]>(GlobalConstants.API+"Notification"+':'+localStorage.getItem('email') ).subscribe( (data : Notification[]) => {
       this.listNotifications = data;
       console.log(this.listNotifications);
       this.notifications = this.listNotifications.length;
@@ -43,6 +43,7 @@ export class AdminHeaderComponent implements OnInit {
     }
   }
 
+
   logout(){
     localStorage.clear();
   }
@@ -51,9 +52,9 @@ export class AdminHeaderComponent implements OnInit {
     this.listNotifications.forEach( (item, index) => {
       if(item === notif) this.listNotifications.splice(index,1);
     });
-    this.http.post(this.API + '/update', {id:notif.ID}).subscribe(
+    this.http.post(GlobalConstants.API+"Notification" + '/update', {id:notif.ID}).subscribe(
       (data: any) => {
-        console.log(data);
+       // console.log(data);
       }
     );
     window.location.reload();
@@ -62,9 +63,10 @@ export class AdminHeaderComponent implements OnInit {
   
   abrirDialogo() {
     const dialogo1 = this.dialogEdit.open(EditUserComponent, {
+      panelClass: 'my-dialog',
      data : new UserLogin('' , '', '' , ''),
-     height: '50%',
-     width: '40%'
+     height: '60%',
+     width: '300px',
     });
 
 
