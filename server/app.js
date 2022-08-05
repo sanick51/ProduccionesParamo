@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
 var nodemailer = require('nodemailer');
 var cors = require('cors')
 var mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
-
 app.use(cors())
 const bodyParser = require('body-parser');
 
@@ -71,6 +71,22 @@ app.post('/Contact/Notification', (req, res) => {
     );
 });
 
+app.post('/Proyects/DeleteMaterial', (req, res) => {
+  console.log(req.body);
+  connection.query('DELETE FROM PROYECTO_MATERIALES WHERE ID_MATERIAL= (SELECT ID_MATERIAL FROM MATERIALES WHERE NOMBRE = "'+req.body.mat+'") AND ID_PRUECTOS = (SELECT ID_PRODUCTO FROM PROYECTOS WHERE ID_PRUECTOS = '+req.body.id+')', function (error, results, fields) {
+    if (error) throw error;
+    console.log(results);
+  })
+});
+
+
+
+app.get('/BuyHistory' , (req, res) => {
+  connection.query('SELECT * FROM HISTORY_BUY ', function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+ });
+});
 
 app.post('/Proyects/Notification', (req, res) => {
   connection.query('INSERT INTO NOTIFICATIONS (NOTE , id_usuario ,TYPE) SELECT "'+req.body.message+'" , id_usuario  , "Project" FROM USUARIOS WHERE ROL = "Administrador"', function (error, results, fields) {
@@ -124,22 +140,88 @@ app.put('/Proyects/edit', (req, res) => {
   console.log(req.body);
 });
 
-app.post('/Login', (req, res) => {
+app.post('/Proyects/RequestMaterial', (req, res) => {
+  console.log(req.body);
+  connection.query('SELECT M.NOMBRE , UNIDAD_MEDIDA , CANTIDAD  FROM MATERIALES M INNER JOIN PROYECTO_MATERIALES R ON M.ID_MATERIAL = R.ID_MATERIAL INNER JOIN PRODUCTOS P ON P.ID_PRODUCTO = R.ID_PRUECTOS  INNER JOIN PROYECTOS PR ON PR.ID_PRODUCTO = P.ID_PRODUCTO WHERE PR.ID_PRUECTOS = '+ req.body.id+'', function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+  }
+  );
+});
 
+app.post('/Proyects/FillMaterial', (req, res) => {
+  console.log(req.body);
+  connection.query('INSERT INTO PROYECTO_MATERIALES (ID_MATERIAL , ID_PRUECTOS , CANTIDAD) SELECT ID_MATERIAL , RM.ID_PRUECTOS , CANTIDAD FROM RECOMENDED_MATERIAL RM INNER JOIN PROYECTOS P ON RM.ID_PRUECTOS = P.ID_PRODUCTO WHERE P.ID_PRUECTOS ='+ req.body.id, function (error, results, fields) {
+    if (error) return error;
+    return res.send(results);
+  }
+  );
+}
+);
+
+app.post('/Material/AddMaterial', (req, res) => {
+  console.log(req.body);
+ connection.query('INSERT INTO PROYECTO_MATERIALES (ID_MATERIAL , ID_PRUECTOS , CANTIDAD) SELECT '+req.body.idMat+', ID_PRODUCTO ,' +req.body.valor+' FROM PROYECTOS WHERE ID_PRUECTOS = ' + req.body.id, function (error, results, fields) {
+    if (error){
+      connection.query('UPDATE PROYECTO_MATERIALES SET CANTIDAD = '+req.body.valor+' WHERE ID_MATERIAL = '+ req.body.idMat);
+    } 
+    return res.send(results);
+  });
+});
+
+app.post('/Material/BuyMaterial', (req, res) => {
+  if (req.body.cantidad == 0){
+    connection.query('SELECT CANTIDAD FROM PROYECTO_MATERIALES WHERE ID_MATERIAL = (SELECT ID_MATERIAL FROM MATERIALES WHERE NOMBRE = "'+req.body.nombre+'") AND ID_PRUECTOS = (SELECT ID_PRODUCTO FROM PROYECTOS WHERE ID_PRUECTOS = '+req.body.id+')', function (error, results, fields) {
+      connection.query('INSERT INTO HISTORY_BUY (CORREO , MATERIAL , CUANTITY , DATE_BUY , TOTAL ) VALUES ("'+req.body.correo + '", "'+req.body.nombre+'" , '+  results[0].CANTIDAD + ', (SELECT now()) , '+req.body.valor* results[0].CANTIDAD + ')', function (error, results, fields) {
+        if (error) throw error;
+        return res.send(results);
+        }
+        );
+    });
+    connection.query('DELETE FROM PROYECTO_MATERIALES WHERE ID_MATERIAL= (SELECT ID_MATERIAL FROM MATERIALES WHERE NOMBRE = "'+req.body.nombre+'") AND ID_PRUECTOS = (SELECT ID_PRODUCTO FROM PROYECTOS WHERE ID_PRUECTOS = '+req.body.id+')', function (error, results, fields) {
+      if (error) throw error;
+      res.send(results);
+    })
+  }else{
+    connection.query('INSERT INTO HISTORY_BUY (CORREO , MATERIAL , CUANTITY , DATE_BUY , TOTAL ) VALUES ("'+req.body.correo + '", "'+req.body.nombre+'" , '+ req.body.cantidad+ ', (SELECT now()) , '+req.body.valor*req.body.cantidad + ')', function (error, results, fields) {
+      if (error) throw error;
+      return res.send(results);
+      }
+      );
+    connection.query('UPDATE PROYECTO_MATERIALES SET CANTIDAD = CANTIDAD - '+req.body.cantidad+' WHERE ID_MATERIAL = (SELECT ID_MATERIAL FROM MATERIALES WHERE NOMBRE = "'+req.body.nombre+'") AND ID_PRUECTOS = (SELECT ID_PRODUCTO FROM PROYECTOS WHERE ID_PRUECTOS = '+req.body.id+')', function (error, results, fields) {
+      if (error) throw error;
+      res.send(results);
+    })
+  }
+});
+
+app.get('/Proyects/AllMaterial', (req, res) => {
+  proyect = connection.query('SELECT * FROM MATERIALES', function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+  }
+  );
+}
+);
+
+
+app.post('/Login', (req, res) => {
+  console.log(req.body);
  connection.query('SELECT CONTRASENA , ROL FROM USUARIOS WHERE CORREO = "'+req.body.email+'" AND STATE IS NOT NULL' , function (error, results, fields) {
 
   if(results.length == 0){
     res.send({message: "El usuario no se encuentra registrado o no está activado" , status: 200} , 400);
   } else {
+
   if(bcrypt.compareSync(req.body.password, results[0].CONTRASENA)){
     var token = jwt.sign({ email: req.body.email }, 'vaca', { expiresIn: '1h' });
     res.send({message: "Login correcto" , status: 200 , token : token ,rol:results[0].ROL , email:req.body.email } , 200);
   }else{
-    res.send({message: "Contraseña incorrecta" , status: 200}, 400);
+
+    res.send({message: "Contraseña incorrecta" , status: 200}, 300);
   }
     }
- }
- );
+ });
  
 });
 
@@ -227,9 +309,8 @@ function createUser(req , hash, res){
   
   connection.query('INSERT INTO USUARIOS (NOMBRE , CORREO , CONTRASENA , ROL) VALUES ('+
   '"'+req.body.name+'" , "'+req.body.email+'" , "'+hash+'", "'+req.body.rol+'" )', function (error, results, fields) {
-    if (error) throw res.send("El usuario correo ya se encuentra registrado" , 500);
-    res.send(results);
-  }
-  );
+    if (error) return res.send("El usuario correo ya se encuentra registrado" , 400);
+    return res.send(results);
+  });
 
 }
